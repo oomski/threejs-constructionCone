@@ -13,14 +13,14 @@ const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
 camera.position.z = 4;
-// camera.position.y = -1.5;
+camera.position.y = -2.5;
 
 // make canvas transparent
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(w, h);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = .5;
+renderer.toneMappingExposure = 8;
 // ensure clear color is fully transparent
 renderer.setClearColor(0x000000, 0);
 document.body.appendChild(renderer.domElement);
@@ -105,10 +105,10 @@ canvas.addEventListener('pointerleave', () => { isRotating = true; }, { passive:
 
 
 
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x666666, 2.5); // slightly stronger
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x666666, 4); // slightly stronger
 scene.add(hemiLight);
 // add ambient fill light (no directional light)
-const ambient = new THREE.AmbientLight(0xffffff, 0.7); // slightly stronger
+const ambient = new THREE.AmbientLight(0xffffff, 1); // slightly stronger
 scene.add(ambient);
 
 // Saturation post-process shader + composer (increase scene saturation)
